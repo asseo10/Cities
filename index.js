@@ -35,8 +35,8 @@ const clearCityInfo = () => {
     closestSpan.textContent = "";
     furthestSpan.textContent = "";
     document.querySelectorAll(".cityBox").forEach(box => {
-        box.className = "cityBox"; // Rensar alla klasser
-        box.textContent = box.textContent.split(" ligger")[0]; // Återställ text
+        box.className = "cityBox"; 
+        box.textContent = box.textContent.split(" ligger")[0]; 
     });
 };
 
@@ -84,12 +84,11 @@ const handleCityInput = cityName => {
             markCityBox(furthestCity, "furthest");
         }
 
-        // Visa rubriker för närmast/längst bort
         [closestSpan, furthestSpan].forEach(el => el.style.display = "inline");
     } else {
         updateCityHeader(cityName, true);
         document.title = "Not Found";
-        document.querySelectorAll("h3").forEach(h3 => h3.remove()); // Ta bort alla <h3>
+        document.querySelectorAll("h3").forEach(h3 => h3.remove()); 
     }
 };
 
