@@ -113,6 +113,16 @@ const renderDistanceTable = () => {
             ${cities.map(({ name }, index) => `<div class="cell">${index}-${name}</div>`).join("")}
         </div>
     `;
-
-    
+    // Lägg till rader
+    distanceMatrix.forEach((row, rowIndex) => {
+        const tableRow = `
+            <div class="row">
+                <div class="cell head_row">${rowIndex}</div>
+                ${row.map((distance, colIndex) =>
+                    `<div class="cell ${colIndex % 2 === 0 ? "even_col" : ""}">${distance}</div>`
+                ).join("")}
+            </div>
+        `;
+        tableContainer.innerHTML += tableRow;
+    });
 };
