@@ -20,3 +20,13 @@ const createCityBoxes = () => {
         citiesContainer.appendChild(cityBox);
     });
 };
+
+const markCityBox = (city, type) => {
+    const box = document.getElementById(`city-${city.id}`);
+    if (box) {
+        box.classList.add(type);
+        if (type !== "target") {
+            box.textContent = `${city.name} ligger ${city.distanceToTarget} mil bort`;
+        }
+    }
+};
