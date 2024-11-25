@@ -42,3 +42,22 @@ const clearCityInfo = () => {
 
 const getCityByName = name =>
     cities.find(city => city.name.toLowerCase() === name.toLowerCase()) || null;
+
+const getClosestOrFurthestCity = (targetCity, findClosest = true) => {
+    let selectedCity = null;
+    let distanceComparator = findClosest ? Infinity : -Infinity;
+
+    distances.forEach(({ city1, city2, distance }) => {
+        if (city1 === targetCity.id || city2 === targetCity.id) {
+            const otherCityId = city1 === targetCity.id ? city2 : city1;
+            if ((findClosest && distance < distanceComparator) ||
+                (!findClosest && distance > distanceComparator)) {
+                selectedCity = cities.find(city => city.id === otherCityId);
+                selectedCity.distanceToTarget = distance;
+                distanceComparator = distance;
+            }
+        }
+    });
+
+    return selectedCity;
+};
