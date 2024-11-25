@@ -9,3 +9,14 @@ const updateCityHeader = (cityName, error = false) => {
         ? `${cityName} finns inte i databasen`
         : cityName;
 };
+
+const createCityBoxes = () => {
+    citiesContainer.innerHTML = ""; 
+    cities.forEach(({ id, name }) => {
+        const cityBox = document.createElement("div");
+        cityBox.classList.add("cityBox");
+        cityBox.id = `city-${id}`;
+        cityBox.textContent = name;
+        citiesContainer.appendChild(cityBox);
+    });
+};
