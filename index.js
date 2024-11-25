@@ -102,3 +102,17 @@ const createDistanceMatrix = () => {
     });
     return matrix;
 };
+
+const renderDistanceTable = () => {
+    const distanceMatrix = createDistanceMatrix();
+
+    // Skapa tabellrubrik
+    tableContainer.innerHTML = `
+        <div class="head_row">
+            <div class="cell header_cell"></div>
+            ${cities.map(({ name }, index) => `<div class="cell">${index}-${name}</div>`).join("")}
+        </div>
+    `;
+
+    
+};
