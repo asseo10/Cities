@@ -126,3 +126,11 @@ const renderDistanceTable = () => {
         tableContainer.innerHTML += tableRow;
     });
 };
+
+document.addEventListener("DOMContentLoaded", () => {
+    createCityBoxes();
+    renderDistanceTable();
+
+    const userInput = prompt("Ange en stad:");
+    handleCityInput(userInput);
+});
