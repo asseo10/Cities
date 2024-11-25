@@ -30,3 +30,12 @@ const markCityBox = (city, type) => {
         }
     }
 };
+
+const clearCityInfo = () => {
+    closestSpan.textContent = "";
+    furthestSpan.textContent = "";
+    document.querySelectorAll(".cityBox").forEach(box => {
+        box.className = "cityBox"; // Rensar alla klasser
+        box.textContent = box.textContent.split(" ligger")[0]; // Återställ text
+    });
+};
