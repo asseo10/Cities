@@ -61,3 +61,34 @@ const getClosestOrFurthestCity = (targetCity, findClosest = true) => {
 
     return selectedCity;
 };
+
+const handleCityInput = cityName => {
+    clearCityInfo();
+    const targetCity = getCityByName(cityName);
+
+    if (targetCity) {
+        updateCityHeader(`${targetCity.name} (${targetCity.country})`);
+        document.title = targetCity.name;
+        markCityBox(targetCity, "target");
+
+        const closestCity = getClosestOrFurthestCity(targetCity, true);
+        const furthestCity = getClosestOrFurthestCity(targetCity, false);
+
+        if (closestCity) {
+            closestSpan.textContent = closestCity.name;
+            markCityBox(closestCity, "closest");
+        }
+
+        if (furthestCity) {
+            furthestSpan.textContent = furthestCity.name;
+            markCityBox(furthestCity, "furthest");
+        }
+
+        // Visa rubriker för närmast/längst bort
+        [closestSpan, furthestSpan].forEach(el => el.style.display = "inline");
+    } else {
+        updateCityHeader(cityName, true);
+        document.title = "Not Found";
+        document.querySelectorAll("h3").forEach(h3 => h3.remove()); // Ta bort alla <h3>
+    }
+};
