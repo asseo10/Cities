@@ -92,3 +92,13 @@ const handleCityInput = cityName => {
         document.querySelectorAll("h3").forEach(h3 => h3.remove()); // Ta bort alla <h3>
     }
 };
+
+const createDistanceMatrix = () => {
+    const matrix = Array(cities.length).fill().map(() => Array(cities.length).fill("&nbsp;"));
+    distances.forEach(({ city1, city2, distance }) => {
+        const adjustedDistance = distance / 10;
+        matrix[city1][city2] = adjustedDistance;
+        matrix[city2][city1] = adjustedDistance;
+    });
+    return matrix;
+};
