@@ -39,3 +39,6 @@ const clearCityInfo = () => {
         box.textContent = box.textContent.split(" ligger")[0]; // Återställ text
     });
 };
+
+const getCityByName = name =>
+    cities.find(city => city.name.toLowerCase() === name.toLowerCase()) || null;
